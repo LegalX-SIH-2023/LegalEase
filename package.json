@@ -21,8 +21,10 @@
     "postcss": "8.4.30",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.11.0",
     "react-query": "^3.39.3",
     "tailwindcss": "3.3.3",
+    "typewriter-effect": "^2.21.0",
     "uuid": "^9.0.1"
   }
 }
