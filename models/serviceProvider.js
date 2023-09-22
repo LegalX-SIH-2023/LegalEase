@@ -6,20 +6,27 @@ import jwt from "jsonwebtoken";
 const { String, Number, Boolean, ObjectId } = Schema.Types;
 Document;
 
-const serviceProviderSchema = new Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique:true },
-  password: { type: String, required: true, select: false },
-  profilePicture: { type: String },
-  documents: {
-    aadharCard: { type: ObjectId, ref: "Document" },
-    panCard: { type: ObjectId, ref: "Document" },
-    certificate: { type: ObjectId, ref: "Document" },
-    additionalDocs: [{ type: ObjectId, ref: "Document" }],
+const serviceProviderSchema = new Schema(
+  {
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true, select: false },
+    profilePicture: { type: String },
+    documents: {
+      aadharCard: { type: ObjectId, ref: "Document" },
+      panCard: { type: ObjectId, ref: "Document" },
+      qualification: { type: ObjectId, ref: "Document" },
+    },
+    experience: { type: Number },
+    skills: [{ type: "String" }],
+    isVerified: { type: Boolean, default: false },
+    verificationStatus: {
+      status: { type: String, default: "Incomplete" },
+      message: { type: String },
+    },
   },
-  experience: { type: Number },
-  skills: [{ type: "String" }],
-});
+  { versionKey: false }
+);
 
 serviceProviderSchema.pre("save", async function (next) {
   if (this.isModified("password")) {

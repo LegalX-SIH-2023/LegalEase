@@ -1,17 +1,21 @@
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import storage from "@/config/firebase";
-import path from "path";
 import { v4 as uuid } from "uuid";
 
-exports.upload = async (folder, file) => {
-  const name = uuid();
-  const fileName = name + path.extname(file.originalname);
+export const upload = async (folder, fileOriginalName, fileBuffer) => {
+  let fileExtension = fileOriginalName.toString().split(".");
+  fileExtension =
+    fileExtension.length > 1
+      ? "." + fileExtension[fileExtension.length - 1]
+      : "";
+  const randomName = uuid();
+  const fileName = randomName + "-" + Date.now() + fileExtension;
   const imageRef = ref(storage, `${folder}/${fileName}`);
-  const uploadPath = (await uploadBytes(imageRef, file.buffer)).ref.fullPath;
+  const uploadPath = (await uploadBytes(imageRef, fileBuffer)).ref.fullPath;
   return uploadPath;
 };
 
-exports.getUrl = async (filePath) => {
+export const getUrl = async (filePath) => {
   const storageRef = ref(storage, filePath);
   const downloadUrl = await getDownloadURL(storageRef);
   return downloadUrl;
