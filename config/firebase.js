@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBlVGRnkH1WTzoqiBNzB2uep7A88vInZbc",
-  authDomain: "error-electronic-health-record.firebaseapp.com",
-  projectId: "error-electronic-health-record",
-  storageBucket: "error-electronic-health-record.appspot.com",
-  messagingSenderId: "150833338151",
-  appId: "1:150833338151:web:c6493c96ecea8611ae3b02",
-  measurementId: "G-2YQ925XJ3P",
+  apiKey: "AIzaSyBp-U6Vht0MxzCMnZ7wOs3EquchVmf2CBk",
+  authDomain: "legal-connect-sih-2023.firebaseapp.com",
+  projectId: "legal-connect-sih-2023",
+  storageBucket: "legal-connect-sih-2023.appspot.com",
+  messagingSenderId: "185616180354",
+  appId: "1:185616180354:web:0aa3b62f6c337def82009b",
+  measurementId: "G-YKLM6NJM50",
 };
 
 const app = initializeApp(firebaseConfig);
