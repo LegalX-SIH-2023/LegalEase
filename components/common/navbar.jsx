@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const AppNavbar = () => {
-  return (
-    <div>AppNavbar</div>
-  )
-}
+  return <div className="bg-primary text-primary-light">AppNavbar</div>;
+};
 
-export default AppNavbar
+export default AppNavbar;

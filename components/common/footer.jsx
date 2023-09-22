@@ -2,7 +2,7 @@ import React from 'react'
 
 const AppFooter = () => {
   return (
-    <div>AppFooter</div>
+    <div className="bg-primary-dark text-primary-light">AppFooter</div>
   )
 }
 
