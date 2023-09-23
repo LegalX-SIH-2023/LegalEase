@@ -4,7 +4,6 @@ import Admin from "@/models/admin";
 import ServiceProvider from "@/models/serviceProvider";
 import checkAuth from "@/utils/checkAuth";
 import { errorResponse, successResponse } from "@/utils/sendResponse";
-import { getUrl } from "@/utils/storage";
 
 export const GET = async (req, { params: { serviceProviderId } }) => {
   try {
@@ -28,14 +27,10 @@ export const GET = async (req, { params: { serviceProviderId } }) => {
 
     const { aadharCard, panCard, qualification } = serviceProvider.documents;
 
-    serviceProvider.profilePicture = await getUrl(
-      serviceProvider.profilePicture
-    );
-    serviceProvider.documents.aadharCard.path = await getUrl(aadharCard.path);
-    serviceProvider.documents.panCard.path = await getUrl(panCard.path);
-    serviceProvider.documents.qualification.path = await getUrl(
-      qualification.path
-    );
+    serviceProvider.profilePicture = `/api/file/${serviceProvider.profilePicture}`;
+    serviceProvider.documents.aadharCard.path = `/api/file/${aadharCard.path}`;
+    serviceProvider.documents.panCard.path = `/api/file/${panCard.path}`;
+    serviceProvider.documents.qualification.path = `/api/file/${qualification.path}`;
 
     return successResponse(200, "Service Provider Details", serviceProvider);
   } catch (error) {

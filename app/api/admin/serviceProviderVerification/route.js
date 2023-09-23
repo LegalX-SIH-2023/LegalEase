@@ -3,7 +3,6 @@ import Admin from "@/models/admin";
 import ServiceProvider from "@/models/serviceProvider";
 import checkAuth from "@/utils/checkAuth";
 import { errorResponse, successResponse } from "@/utils/sendResponse";
-import { getUrl } from "@/utils/storage";
 
 export const GET = async (req) => {
   try {
@@ -24,7 +23,7 @@ export const GET = async (req) => {
 
     await Promise.all(
       serviceProviders.map(async ({ profilePicture }, index) => {
-        serviceProviders[index].profilePicture = await getUrl(profilePicture);
+        serviceProviders[index].profilePicture = `/api/file/${profilePicture}`;
       })
     );
 
