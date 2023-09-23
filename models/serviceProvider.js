@@ -2,6 +2,7 @@ import { Schema, model, models } from "mongoose";
 import Document from "@/models/document";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { VERIFICATION_STATUS } from "@/constants/verificationStatus";
 
 const { String, Number, Boolean, ObjectId } = Schema.Types;
 Document;
@@ -9,7 +10,7 @@ Document;
 const serviceProviderSchema = new Schema(
   {
     name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true, select: false },
     password: { type: String, required: true, select: false },
     profilePicture: { type: String },
     documents: {
@@ -19,9 +20,8 @@ const serviceProviderSchema = new Schema(
     },
     experience: { type: Number },
     skills: [{ type: "String" }],
-    isVerified: { type: Boolean, default: false },
     verificationStatus: {
-      status: { type: String, default: "Incomplete" },
+      status: { type: String, default: VERIFICATION_STATUS.Incomplete },
       message: { type: String },
     },
   },

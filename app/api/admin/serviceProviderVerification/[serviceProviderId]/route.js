@@ -1,4 +1,5 @@
 import { connectDB } from "@/config/database";
+import { VERIFICATION_STATUS } from "@/constants/verificationStatus";
 import Admin from "@/models/admin";
 import ServiceProvider from "@/models/serviceProvider";
 import checkAuth from "@/utils/checkAuth";
@@ -55,11 +56,19 @@ export const PATCH = async (req, { params: { serviceProviderId } }) => {
     const serviceProvider = await ServiceProvider.findById(serviceProviderId);
     if (!serviceProvider)
       return errorResponse(404, "Service Provider not found");
-    if (serviceProvider.isVerified)
+
+    if (
+      serviceProvider.verificationStatus.status === VERIFICATION_STATUS.Verified
+    )
       return errorResponse(409, "Service Provider Already Verified");
 
-    serviceProvider.verificationStatus = undefined;
-    serviceProvider.isVerified = true;
+    const { message } = await req.json();
+    if (!message) return errorResponse(400, "Please enter message");
+
+    serviceProvider.verificationStatus = {
+      status: VERIFICATION_STATUS.Verified,
+      message,
+    };
 
     await serviceProvider.save();
 
@@ -83,11 +92,18 @@ export const PUT = async (req, { params: { serviceProviderId } }) => {
     if (!serviceProvider)
       return errorResponse(404, "Service Provider not found");
 
-    const { message } = await req.json();
-    if (!message) return errorResponse(400, "Please enter rejection message");
+    if (
+      serviceProvider.verificationStatus.status === VERIFICATION_STATUS.Rejected
+    )
+      return errorResponse(409, "Service Provider Already Rejected");
 
-    serviceProvider.verificationStatus = { status: "Rejected", message };
-    serviceProvider.isVerified = false;
+    const { message } = await req.json();
+    if (!message) return errorResponse(400, "Please enter message");
+
+    serviceProvider.verificationStatus = {
+      status: VERIFICATION_STATUS.Rejected,
+      message,
+    };
 
     await serviceProvider.save();
 

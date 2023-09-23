@@ -8,7 +8,7 @@ const { String, Number, Boolean, ObjectId } = Schema.Types;
 const clientSchema = new Schema(
   {
     name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true, select: false  },
     password: { type: String, required: true, select: false },
   },
   { versionKey: false }

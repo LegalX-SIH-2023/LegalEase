@@ -1,3 +1,4 @@
+import { VERIFICATION_STATUS } from "@/constants/verificationStatus";
 import Admin from "@/models/admin";
 import ServiceProvider from "@/models/serviceProvider";
 import checkAuth from "@/utils/checkAuth";
@@ -6,6 +7,11 @@ import { getUrl } from "@/utils/storage";
 
 export const GET = async (req) => {
   try {
+    const status = req.nextUrl?.searchParams?.get("status");
+
+    if (!Object.values(VERIFICATION_STATUS).includes(status))
+      return errorResponse(400, "Invalid Verification Status");
+
     const adminId = await checkAuth(req);
     if (!adminId) return errorResponse(403, "Please login first");
 
@@ -13,7 +19,7 @@ export const GET = async (req) => {
     if (!admin) return errorResponse(403, "Account not found");
 
     const serviceProviders = await ServiceProvider.find({
-      verificationStatus: { status: "Pending" },
+      "verificationStatus.status": status,
     });
 
     await Promise.all(
@@ -24,10 +30,11 @@ export const GET = async (req) => {
 
     return successResponse(
       200,
-      "Service Providers with Verification Pending",
+      `Service Providers with Verification ${status}`,
       serviceProviders
     );
   } catch (error) {
-    return errorResponse();
+    console.log(error);
+    return errorResponse(500, error.message);
   }
 };

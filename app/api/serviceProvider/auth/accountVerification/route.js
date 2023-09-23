@@ -4,6 +4,7 @@ import uploadDocument from "@/utils/uploadDocument";
 import ServiceProvider from "@/models/serviceProvider";
 import checkAuth from "@/utils/checkAuth";
 import { upload } from "@/utils/storage";
+import { VERIFICATION_STATUS } from "@/constants/verificationStatus";
 
 export const POST = async (req) => {
   try {
@@ -14,7 +15,10 @@ export const POST = async (req) => {
 
     let serviceProvider = await ServiceProvider.findById(serviceProviderId);
     if (!serviceProvider) return errorResponse(403, "Account not found");
-    if(serviceProvider.isVerified) return errorResponse(409, "Account already verified");
+    if (
+      serviceProvider.verificationStatus.status === VERIFICATION_STATUS.Verified
+    )
+      return errorResponse(409, "Account already verified");
 
     const form = Object.fromEntries(await req.formData());
     const {
@@ -72,7 +76,7 @@ export const POST = async (req) => {
         profilePicture: profilePicturePath,
         experience: Number(experience),
         skills: JSON.parse(skills),
-        verificationStatus: { status: "Pending" },
+        verificationStatus: { status: VERIFICATION_STATUS.Pending },
       },
     });
 
