@@ -2,8 +2,12 @@
 import React, { useState } from "react";
 import CloseIcon from "./assets/closeIcon";
 import AddIcon from "./assets/addIcon";
+import httpRequest from "@/utils/httpRequest";
+import { HTTP_METHODS } from "@/constants/httpMethods";
 
 const Verification = () => {
+  const [imageData, setImageData] = useState(null);
+  const [profilePicture, setprofilePicture] = useState(null);
   const [currentSkill, setCurrentSkill] = useState("");
   const [yoe, setYoe] = useState(null);
   const [skills, setSkills] = useState([
@@ -17,6 +21,12 @@ const Verification = () => {
     // "ExpressJS",
     // "MongoDB",
   ]);
+
+  const [documents, setDocuments] = useState({
+    aadharCard: null,
+    panCard: null,
+    qualification: null,
+  });
 
   const handleCurrentSkill = (e) => {
     setCurrentSkill(e.target.value);
@@ -35,17 +45,39 @@ const Verification = () => {
     }
   };
 
-  const [image, setImage] = useState(null);
-
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    setprofilePicture(file);
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        setImage(reader.result);
+        setImageData(reader.result);
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const submitVerification = () => {
+    const form = new FormData();
+    form.set("profilePicture", profilePicture);
+    form.set("aadharCard", documents.aadharCard);
+    form.set("panCard", documents.panCard);
+    form.set("qualification", documents.qualification);
+    form.set("experience", yoe);
+    form.set("skills", JSON.stringify(skills));
+
+    httpRequest(
+      `/api/serviceProvider/auth/accountVerification`,
+      HTTP_METHODS.POST,
+      form,
+      true
+    ).then((res) => {
+      if (res.success) {
+        alert(res.message);
+      } else {
+        alert(res.message);
+      }
+    });
   };
 
   return (
@@ -53,6 +85,7 @@ const Verification = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          submitVerification();
         }}
       >
         <div className="flex flex-col gap-3 md:gap-6 sm:w-1/2 mx-auto my-4 sm:my-10 md:my-20">
@@ -87,9 +120,9 @@ const Verification = () => {
                 }}
                 className="mx-auto"
               >
-                {image ? (
+                {imageData ? (
                   <img
-                    src={image}
+                    src={imageData}
                     alt="Profile"
                     style={{ maxWidth: "100%", maxHeight: "100%" }}
                   />
@@ -107,6 +140,9 @@ const Verification = () => {
             <input
               className="block bg-primary-light p-2 rounded-lg border border-[#555] file:bg-[#262924] file:py-2 file:px-4 file:rounded-lg file:text-white file:border-none file:mr-3"
               type="file"
+              onChange={(e) =>
+                setDocuments({ ...documents, aadharCard: e.target.files[0] })
+              }
             ></input>
           </div>
           <div className="flex flex-col gap-1 sm:gap-2">
@@ -116,6 +152,9 @@ const Verification = () => {
             <input
               className="block bg-primary-light p-2 rounded-lg border border-[#555] file:bg-[#262924] file:py-2 file:px-4 file:rounded-lg file:text-white file:border-none file:mr-3"
               type="file"
+              onChange={(e) =>
+                setDocuments({ ...documents, panCard: e.target.files[0] })
+              }
             ></input>
           </div>
           <div className="flex flex-col gap-1 sm:gap-2">
@@ -125,6 +164,9 @@ const Verification = () => {
             <input
               className="block bg-primary-light p-2 rounded-lg border border-[#555] file:bg-[#262924] file:py-2 file:px-4 file:rounded-lg file:text-white file:border-none file:mr-3"
               type="file"
+              onChange={(e) =>
+                setDocuments({ ...documents, qualification: e.target.files[0] })
+              }
             ></input>
           </div>
           <div className="flex flex-col gap-1 sm:gap-2">

@@ -1,11 +1,13 @@
-"use client"
+"use client";
 
 import React, { useContext, useEffect, useState } from "react";
 // import { BiUser } from "react-icons/bi";
 // import { MdOutlineMailOutline, MdLockOutline } from "react-icons/md";
-import Image from 'next/image';
+import Image from "next/image";
 // import { Link, useNavigate } from "react-router-dom";
 import Link from "next/link";
+import httpRequest from "@/utils/httpRequest";
+import { HTTP_METHODS } from "@/constants/httpMethods";
 // import httprequest from "../utils/req";
 
 const CreateAccount = () => {
@@ -13,21 +15,22 @@ const CreateAccount = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-//   const navigate = useNavigate();
-//   console.log(process.env.REACT_APP_API);
-//   const register = async () => {
-//     httprequest(
-//       `${process.env.REACT_APP_API}/api/${user ? "serviceprovider" : "client"}/signup`,
-//       "POST",
-//       { name, email, password }
-//     ).then((res) => {
-//       if (res.success) {
-//         navigate(`/Login`);
-//       } else {
-//         alert(res.message);
-//       }
-//     });
-//   };
+  //   const navigate = useNavigate();
+  //   console.log(process.env.REACT_APP_API);
+  const register = async () => {
+    console.log({ name, email, password });
+    httpRequest(
+      `/api/${user ? "client" : "serviceProvider"}/auth/signup`,
+      HTTP_METHODS.POST,
+      { name, email, password }
+    ).then((res) => {
+      if (res.success) {
+        alert(res.message);
+      } else {
+        alert(res.message);
+      }
+    });
+  };
   useEffect(() => {}, []);
   return (
     <main className=" font-poppins">
@@ -36,12 +39,12 @@ const CreateAccount = () => {
           <div className="m-auto">
             {/* <img src={voiceImage} alt="" /> */}
             <Image
-                src="/lawyerImage.jpg"
-                alt="anu"
-                width="500"
-                height="500"
-                className="mx-auto max-w-full h-auto"
-             />
+              src="/lawyerImage.jpg"
+              alt="anu"
+              width="500"
+              height="500"
+              className="mx-auto max-w-full h-auto"
+            />
             <h1 className="text-white text-center text-md sm:text-3xl mt-3">
               <span className="text-primary">Create Account</span>
             </h1>
@@ -124,6 +127,7 @@ const CreateAccount = () => {
                   className=" border text-xs focus:outline-none w-full pl-9 py-4 rounded-md"
                   type="password"
                   placeholder="Enter your name"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
             </div>

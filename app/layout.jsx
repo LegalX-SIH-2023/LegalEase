@@ -17,11 +17,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <AppProviders>
-          <dispatchEvent>
+          {/* <dispatchEvent> */}
             {/* <Navbar/> -----------> as of now navbar is in the Hero component*/}
             <div>{children}</div>
             <Footer />
-          </dispatchEvent>
+          {/* </dispatchEvent> */}
         </AppProviders>
       </body>
     </html>

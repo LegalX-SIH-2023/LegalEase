@@ -1,42 +1,48 @@
-"use client"
+"use client";
 
 import React, { useContext, useEffect, useState } from "react";
 // import { BiUser } from "react-icons/bi";
 // import { MdOutlineMailOutline, MdLockOutline } from "react-icons/md";
-import Image from 'next/image';
+import Image from "next/image";
 // import { Link, useNavigate } from "next/link";
-import  Link  from "next/link";
+import Link from "next/link";
+import { HTTP_METHODS } from "@/constants/httpMethods";
+import httpRequest from "@/utils/httpRequest";
 // import httprequest from "../utils/req";
 
 const Login = () => {
-//   const navigate = useNavigate();
+  //   const navigate = useNavigate();
   const [user, setUser] = useState(0);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-//   const login = async () => {
-//     httprequest(`/api/${user ? "serviceprovider" : "client"}/login`, "POST", {
-//       email,
-//       password,
-//     }).then((res) => {
-//       if (res.success) {
-//         navigate(`/${user ? "serviceprovider" : "client"}`);
-//       } else {
-//         alert(res.message);
-//       }
-//     });
-//   };
+  const login = async () => {
+    httpRequest(
+      `/api/${user ? "client" : "serviceProvider"}/auth/login`,
+      HTTP_METHODS.POST,
+      {
+        email,
+        password,
+      }
+    ).then((res) => {
+      if (res.success) {
+        alert(res.message);
+      } else {
+        alert(res.message);
+      }
+    });
+  };
 
-//   useEffect(() => {
-//     httprequest(`/api/${user ? "serviceprovider" : "client"}/getDetails`, "GET").then(
-//       (res) => {
-//         if (res.success) {
-//           navigate(`/${user ? "serviceprovider" : "client"}`);
-//         } else {
-//         }
-//       }
-//     );
-//   }, []);
+  //   useEffect(() => {
+  //     httprequest(`/api/${user ? "serviceprovider" : "client"}/getDetails`, "GET").then(
+  //       (res) => {
+  //         if (res.success) {
+  //           navigate(`/${user ? "serviceprovider" : "client"}`);
+  //         } else {
+  //         }
+  //       }
+  //     );
+  //   }, []);
   return (
     <main className=" font-poppins">
       <div className="grid grid-flow-row gap-4 sm:gap-0 sm:grid-cols-2 h-screen">
@@ -44,12 +50,12 @@ const Login = () => {
           <div className="m-auto">
             {/* <img src={voiceImage} alt="" /> */}
             <Image
-                src="/lawyerImage.jpg"
-                alt="anu"
-                width="500"
-                height="500"
-                className="mx-auto max-w-full h-auto"
-             />
+              src="/lawyerImage.jpg"
+              alt="anu"
+              width="500"
+              height="500"
+              className="mx-auto max-w-full h-auto"
+            />
             <h1 className="text-white text-center text-md sm:text-3xl mt-3">
               <span className="text-primary">Login</span>
             </h1>
@@ -125,10 +131,7 @@ const Login = () => {
             <div className="mt-4">
               <p className="text-xs font-semibold text-[#929298] text-center">
                 new user ?{" "}
-                <Link
-                  href="/signup"
-                  className="text-primary underline"
-                >
+                <Link href="/signup" className="text-primary underline">
                   Create Account
                 </Link>
               </p>
