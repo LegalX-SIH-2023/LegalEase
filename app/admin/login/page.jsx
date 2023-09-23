@@ -8,7 +8,7 @@ import Image from 'next/image';
 import  Link  from "next/link";
 // import httprequest from "../utils/req";
 
-const adminLogin = () => {
+const AdminLogin = () => {
 //   const navigate = useNavigate();
   const [user, setUser] = useState(0);
   const [email, setEmail] = useState("");
@@ -85,4 +85,4 @@ const adminLogin = () => {
   );
 };
 
-export default adminLogin;
+export default AdminLogin;
