@@ -7,9 +7,9 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "SIH 2023",
+  title: "LegalConnect",
   description:
-    "MHSSCOE ACM CHAPTER is a student chapter started by M. H. Saboo Siddik College Of Engineering in 2014. The chapter has successfully conducted various workshops, seminars and industrial visits for the students.",
+    "Earn, Consult, Automate & Learn",
 };
 
 export default function RootLayout({ children }) {
