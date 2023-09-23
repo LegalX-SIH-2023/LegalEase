@@ -16,11 +16,11 @@ export default function ServiceProviderCard(props) {
                     <img
                     src={imageUrl}
                     alt="Profile"
-                    className="object-cover object-center w-[20%] rounded-[50%] max-h-[100px]"
+                    className="object-cover object-center w-[20%] rounded-[50%] min-w-[100px] min-h-[100px]"
                     style={{maxHeight:'20%'}}
                     />
                     <div className="self-start ml-[5%]">
-                        <h2 className="text-2xl text-primary-navy font-semibold text-left" >{name}</h2>
+                        <h2 className="text-2xl md:text-xl text-primary-navy font-semibold text-left" >{name}</h2>
                         <p className="text-gray-500 text-sm text-left">{experience} years of experience</p>
                         <div className="mt-2 flex">
                             <div className="text-lg text-left font-semibold   text-primary-navy">Skills : </div>
