@@ -30,7 +30,7 @@ const AdminDashboardPendingVerifications = () => {
     <>
       <h1 className="text-center text-4xl text-primary-navy font-semibold py-4">Pending Verifications</h1>
       {/* {JSON.stringify(serviceProviders)} */}
-      <div className="flex justify-center flex-col sm:flex-row">
+      <div className="flex justify-center flex-col desktop:flex-row">
         {arr}
       </div>
     </>
