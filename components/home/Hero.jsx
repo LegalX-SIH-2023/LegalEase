@@ -13,7 +13,7 @@ const Hero = () => {
         <Navbar />
         <section className="flex justify-around items-center xl:mt-16">
           <div className="flex flex-col items-start gap-4">
-            <div className="min-h-[96px] ">
+            <div className="min-h-[96px]">
               <Typewriter
                 options={{
                   autoStart: true,
