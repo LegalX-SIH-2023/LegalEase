@@ -1,4 +1,4 @@
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL, getStream } from "firebase/storage";
 import storage from "@/config/firebase";
 import { v4 as uuid } from "uuid";
 
@@ -19,4 +19,10 @@ export const getUrl = async (filePath) => {
   const storageRef = ref(storage, filePath);
   const downloadUrl = await getDownloadURL(storageRef);
   return downloadUrl;
+};
+
+export const getFileStream = async (filePath) => {
+  const storageRef = ref(storage, filePath);
+  const fileStream = getStream(storageRef);
+  return fileStream;
 };

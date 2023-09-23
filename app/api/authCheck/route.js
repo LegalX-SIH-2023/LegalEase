@@ -4,8 +4,6 @@ import Client from "@/models/client";
 import ServiceProvider from "@/models/serviceProvider";
 import checkAuth from "@/utils/checkAuth";
 import { errorResponse, successResponse } from "@/utils/sendResponse";
-import { getUrl } from "@/utils/storage";
-
 export const GET = async (req) => {
   try {
     const userId = await checkAuth(req);
@@ -32,7 +30,7 @@ export const GET = async (req) => {
     }
 
     if (user.profilePicture)
-      user.profilePicture = await getUrl(user.profilePicture);
+      user.profilePicture = `/api/file/${user.profilePicture}`;
 
     return successResponse(200, "Logged in", { user: { ...user._doc, role } });
   } catch (error) {
