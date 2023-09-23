@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react'
-import { GiHamburgerMenu } from 'react-icons/gi';
+import  {GiHamburgerMenu}  from 'react-icons/gi';
 import { AiOutlineClose } from 'react-icons/ai';
 
 const Navbar = () => {
