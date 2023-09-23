@@ -10,6 +10,11 @@ const Verification = () => {
   const [profilePicture, setprofilePicture] = useState(null);
   const [currentSkill, setCurrentSkill] = useState("");
   const [yoe, setYoe] = useState(null);
+  const [documentSizes, setDocumentSizes] = useState({
+    aadharCard: 0,
+    panCard: 0,
+    qualification: 0,
+  });
   const [skills, setSkills] = useState([
     // "C++",
     // "Java",
@@ -27,6 +32,8 @@ const Verification = () => {
     panCard: null,
     qualification: null,
   });
+
+  const [agreeCondition, setAgreeCondition] = useState(false);
 
   const handleCurrentSkill = (e) => {
     setCurrentSkill(e.target.value);
@@ -58,6 +65,13 @@ const Verification = () => {
   };
 
   const submitVerification = () => {
+    if (
+      documentSizes.aadharCard > 1024 * 1024 ||
+      documentSizes.panCard > 1024 * 1024 ||
+      documentSizes.qualification > 1024 * 1024 ||
+      !agreeCondition
+    )
+      return;
     const form = new FormData();
     form.set("profilePicture", profilePicture);
     form.set("aadharCard", documents.aadharCard);
@@ -137,13 +151,24 @@ const Verification = () => {
             <label htmlFor="file" className="text-md sm:text-xl md:text-2xl">
               Upload Aadhar Card
             </label>
+
             <input
               className="block bg-primary-light p-2 rounded-lg border border-[#555] file:bg-[#262924] file:py-2 file:px-4 file:rounded-lg file:text-white file:border-none file:mr-3"
               type="file"
-              onChange={(e) =>
-                setDocuments({ ...documents, aadharCard: e.target.files[0] })
-              }
+              onChange={(e) => {
+                setDocumentSizes({
+                  ...documentSizes,
+                  aadharCard: e.target.files[0].size,
+                });
+                setDocuments({ ...documents, aadharCard: e.target.files[0] });
+              }}
+              accept=".pdf"
             ></input>
+            {documentSizes.aadharCard > 1024 * 1024 && (
+              <p className="text-red-700">
+                Please upload document less than 1MB
+              </p>
+            )}
           </div>
           <div className="flex flex-col gap-1 sm:gap-2">
             <label htmlFor="file" className="text-md sm:text-xl md:text-2xl">
@@ -152,10 +177,20 @@ const Verification = () => {
             <input
               className="block bg-primary-light p-2 rounded-lg border border-[#555] file:bg-[#262924] file:py-2 file:px-4 file:rounded-lg file:text-white file:border-none file:mr-3"
               type="file"
-              onChange={(e) =>
-                setDocuments({ ...documents, panCard: e.target.files[0] })
-              }
+              onChange={(e) => {
+                setDocumentSizes({
+                  ...documentSizes,
+                  panCard: e.target.files[0].size,
+                });
+                setDocuments({ ...documents, panCard: e.target.files[0] });
+              }}
+              accept=".pdf"
             ></input>
+            {documentSizes.panCard > 1024 * 1024 && (
+              <p className="text-red-700">
+                Please upload document less than 1MB
+              </p>
+            )}
           </div>
           <div className="flex flex-col gap-1 sm:gap-2">
             <label htmlFor="file" className="text-md sm:text-xl md:text-2xl">
@@ -164,10 +199,23 @@ const Verification = () => {
             <input
               className="block bg-primary-light p-2 rounded-lg border border-[#555] file:bg-[#262924] file:py-2 file:px-4 file:rounded-lg file:text-white file:border-none file:mr-3"
               type="file"
-              onChange={(e) =>
-                setDocuments({ ...documents, qualification: e.target.files[0] })
-              }
+              onChange={(e) => {
+                setDocumentSizes({
+                  ...documentSizes,
+                  qualification: e.target.files[0].size,
+                });
+                setDocuments({
+                  ...documents,
+                  qualification: e.target.files[0],
+                });
+              }}
+              accept=".pdf"
             ></input>
+            {documentSizes.qualification > 1024 * 1024 && (
+              <p className="text-red-700">
+                Please upload document less than 1MB
+              </p>
+            )}
           </div>
           <div className="flex flex-col gap-1 sm:gap-2">
             <label htmlFor="file" className="text-md sm:text-xl md:text-2xl">
@@ -178,6 +226,7 @@ const Verification = () => {
                 className="block w-full bg-[#f8f6f5] outline-none text-xl"
                 type="number"
                 value={yoe}
+                min={0}
                 onChange={(e) => setYoe(e.target.value)}
               ></input>
             </div>
@@ -222,6 +271,25 @@ const Verification = () => {
                 </div>
               );
             })}
+          </div>
+
+          <div className="flex gap-2">
+            <div className="py-1">
+              <input
+                type="checkbox"
+                className="accent-primary h-4 w-4"
+                name=""
+                id=""
+                checked={agreeCondition}
+                onChange={() => setAgreeCondition(!agreeCondition)}
+              />
+            </div>
+            <p className="text-lg font-semibold text-[#929298]">
+              I agree to the{" "}
+              <a className="text-primary cursor-pointer">
+                terms and conditions
+              </a>
+            </p>
           </div>
           <button className="bg-primary py-4 text-white rounded-lg text-lg">
             Submit Documents
