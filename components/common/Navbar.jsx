@@ -14,7 +14,7 @@ const Navbar = () => {
     let [open, setOpen] = useState(false);
     return (
         <div className=''>
-            <div className='md:flex items-center justify-between 2xl:py-4 md:px-10 px-7 py-2 shadow-xl'>
+            <div className='md:flex items-center justify-between 2xl:py-4 md:px-10 px-7 py-[10px] shadow-xl bg-white fixed w-full'>
                 <div className='font-bold text-3xl flex items-center'>
                     <span className='text-[#D47C42]'>Legal</span><span className='text-primary-navy'>Connect</span>
                 </div>
