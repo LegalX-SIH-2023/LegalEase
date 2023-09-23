@@ -97,8 +97,9 @@ const AdminDashboardServiceProviderDetails = ({
           {serviceProviderDetails.documents && (
             <iframe
               src={serviceProviderDetails.documents.panCard.path + "#toolbar=0"}
-              className="w-[400px] h-[400px]"
-              type="application/pdf"
+              className="w-[400px] h-[400px] m-4 mt-8 rounded-xl border-none"
+              type="application/pdf" 
+              allow="fullscreen"
             />
           )}
         </div>
