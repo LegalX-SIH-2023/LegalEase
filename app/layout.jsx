@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import AppProviders from "@/providers/providers";
-// import Navbar from "@/components/common/Navbar";
+import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 import { Inter } from "next/font/google";
 
@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <AppProviders>
           {/* <dispatchEvent> */}
-            {/* <Navbar/> -----------> as of now navbar is in the Hero component*/}
+            <Navbar/>
             <div>{children}</div>
             <Footer />
           {/* </dispatchEvent> */}

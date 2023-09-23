@@ -52,10 +52,10 @@ const Services = () => {
             </section>
 
             {/* mailing */}
-            <section className='flex md:flex-row flex-col items-center justify-center mt-20'>
+            <section className='flex md:flex-row flex-col items-center justify-center mt-20 mdf:gap-0 gap-2'>
                 <label htmlFor="Join Us:" className='text-4xl text-[#D47C42] font-semibold mr-4'>Join Us:</label>
                 <div>
-                    <input type="email" placeholder='Email..' className='rounded-xl bg-primary-lightGray md:w-[300px] m-1 p-2' />
+                    <input type="email" placeholder='Email..' className='rounded-xl bg-primary-lightGray md:w-[300px] w-[200px] m-1 p-2' />
                     <button className='p-2 bg-primary-navy rounded-xl px-4 text-xl font-semibold text-white hover:shadow-xl ml-1'>Subscribe</button>
                 </div>
             </section>
