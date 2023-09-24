@@ -11,15 +11,17 @@ const AdminLayout = ({ children }) => {
   const pathname = usePathname();
   useEffect(() => {
     console.log(isUserLoggedIn, userDetails);
-    if (isUserLoggedIn === true && userDetails?.role === USER_ROLES.admin) {
-      (pathname === "/admin" || pathname === "/admin/dashboard") &&
-        router.replace(
-          "/admin/dashboard/serviceProviders/pendingVerifications"
-        );
+    if (isUserLoggedIn === true) {
+      if (userDetails?.role === USER_ROLES.admin) {
+        (pathname === "/admin" || pathname === "/admin/dashboard") &&
+          router.replace(
+            "/admin/dashboard/serviceProviders/pendingVerifications"
+          );
+      } else {
+        router.replace("/");
+      }
     } else if (isUserLoggedIn === false) {
       router.replace("/admin/login");
-    } else {
-      router.replace("/");
     }
   }, [pathname, isUserLoggedIn, userDetails]);
   return children;
