@@ -1,5 +1,5 @@
 "use client";
-// import { Document, Page } from 'react-pdf';
+
 import { HTTP_METHODS } from "@/constants/httpMethods";
 import httpRequest from "@/utils/httpRequest";
 import { useEffect, useState } from "react";
@@ -144,23 +144,11 @@ const AdminDashboardServiceProviderDetails = ({
           <label htmlFor="Join Us:" className='text-3xl text-primary-navy font-semibold mr-4'>Message:</label>
           <div className="flex gap-2">
             <input type="email" placeholder='Message..' className='rounded-xl bg-primary-lightGray md:w-[300px] w-[200px] p-2' />
-            <button className='font-semibold px-2 py-1 bg-red-500 rounded-xl text-white text-xl hover:shadow-md'>Reject</button>
-            <button className='p-2 bg-green-500 rounded-xl px-4 text-xl font-semibold text-white hover:shadow-md'>Accept</button>
+            <button className='font-semibold px-2 py-1 bg-red-500 rounded-xl text-white text-xl hover:shadow-md' onClick={() => rejectVerification("Sorry")}>Reject</button>
+            <button className='p-2 bg-green-500 rounded-xl px-4 text-xl font-semibold text-white hover:shadow-md' onClick={() => acceptVerification("Welcome")}>Accept</button>
           </div>
         </div>
       </section>
-      {/* <button
-        className="bg-green-500"
-        onClick={() => acceptVerification("Welcome")}
-      > 
-        Accept
-      </button>
-      <button
-        className="bg-red-500"
-        onClick={() => rejectVerification("Sorry")}
-      >
-        Reject
-      </button> */}
     </>
   );
 };
