@@ -1,47 +1,42 @@
 "use client";
 
 import React, { useContext, useEffect, useState } from "react";
-// import { BiUser } from "react-icons/bi";
-// import { MdOutlineMailOutline, MdLockOutline } from "react-icons/md";
-import Image from "next/image";
-// import { Link, useNavigate } from "next/link";
-import Link from "next/link";
 import httpRequest from "@/utils/httpRequest";
 import { HTTP_METHODS } from "@/constants/httpMethods";
-// import httprequest from "../utils/req";
+import { useRouter } from "next/navigation";
+import { CommonContext } from "@/providers/contextProvider";
 
 const AdminLogin = () => {
-  //   const navigate = useNavigate();
+  const { isUserLoggedIn, setAuthCheck } = useContext(CommonContext);
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const login = async () => {
-    httpRequest(`/api/admin/auth/login`,HTTP_METHODS.POST, {
+    httpRequest(`/api/admin/auth/login`, HTTP_METHODS.POST, {
       email,
       password,
     }).then((res) => {
       if (res.success) {
-        alert(res.message);
+        setAuthCheck(true);
       } else {
         alert(res.message);
       }
     });
   };
 
-  //   useEffect(() => {
-  //     httprequest(`/api/${user ? "serviceprovider" : "client"}/getDetails`, "GET").then(
-  //       (res) => {
-  //         if (res.success) {
-  //           navigate(`/${user ? "serviceprovider" : "client"}`);
-  //         } else {
-  //         }
-  //       }
-  //     );
-  //   }, []);
+  useEffect(() => {
+    if (isUserLoggedIn) {
+      router.replace("/admin/dashboard");
+    }
+  }, [isUserLoggedIn]);
+
   return (
     <main className=" font-poppins">
       <div className="container mx-auto flex flex-col h-[90vh] justify-center items-center px-4">
-        <h2 className="text-4xl font-bold text-center text-primary-navy mb-6">Admin</h2>
+        <h2 className="text-4xl font-bold text-center text-primary-navy mb-6">
+          Admin
+        </h2>
         <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
           <form
             className="p-6"
