@@ -14,11 +14,27 @@ const Navbar = () => {
     let [open, setOpen] = useState(false);
     return (
         <div className=''>
-            <div className='md:flex items-center justify-between 2xl:py-4 md:px-10 px-7 py-[10px] shadow-xl bg-white fixed w-full'>
+            <div className='md:flex items-center justify-between 2xl:py-4 md:px-10 px-7 py-[10px] shadow-xl z-10 bg-white fixed w-full'>
                 <div className='font-bold text-3xl flex items-center'>
                     <span className='text-[#D47C42]'>Legal</span><span className='text-primary-navy'>Connect</span>
                 </div>
-
+                <ul
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-transparent md:z-auto left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
+            open ? "top-[55px]" : "top-[-490px]"
+          }`}
+        >
+          {Links.map((link) => (
+            <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
+              <a
+                href={link.link}
+                className="font-semibold text-primary-navy hover:text-[#7f6abe] duration-500"
+                onClick={() => setOpen(false)}
+              >
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
                 <div onClick={() => setOpen(!open)} className='text-3xl absolute right-8 top-3 cursor-pointer lg:hidden sm:block text-black'>
                     {open ? <AiOutlineClose /> : <GiHamburgerMenu />}
                 </div>
