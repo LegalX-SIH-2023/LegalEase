@@ -10,13 +10,16 @@ const AdminLayout = ({ children }) => {
   const router = useRouter();
   const pathname = usePathname();
   useEffect(() => {
-    console.log(isUserLoggedIn,userDetails)
+    console.log(isUserLoggedIn, userDetails);
     if (isUserLoggedIn === true && userDetails?.role === USER_ROLES.admin) {
-      (pathname === "/admin" || pathname === "/admin/dashboard") && router.replace("/admin/dashboard/serviceProviders/pendingVerifications");
+      (pathname === "/admin" || pathname === "/admin/dashboard") &&
+        router.replace(
+          "/admin/dashboard/serviceProviders/pendingVerifications"
+        );
     } else if (isUserLoggedIn === false) {
       router.replace("/admin/login");
     }
-  }, [ isUserLoggedIn, userDetails]);
+  }, [pathname, isUserLoggedIn, userDetails]);
   return children;
 };
 

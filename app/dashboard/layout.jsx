@@ -15,7 +15,7 @@ const UserDashboardLayout = ({ children }) => {
     } else if (isUserLoggedIn === false) {
       router.replace("/login");
     }
-  }, [isUserLoggedIn, userDetails]);
+  }, [pathname,isUserLoggedIn, userDetails]);
   return children;
 };
 
