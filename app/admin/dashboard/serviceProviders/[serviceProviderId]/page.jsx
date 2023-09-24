@@ -83,8 +83,8 @@ const AdminDashboardServiceProviderDetails = ({
         </div>
 
         <div className="bg-primary-lightGray p-1 rounded-xl flex gap-2 mt-12">
-          <button className={`${qualifications ? "bg-primary-navy" : "bg-white text-primary-dark"}
-          bg-primary-navy text-xl text-white rounded-xl m-1 p-2 hover:bg-primary-navy hover:text-white duration-500`}
+          <button className={`${qualifications ? "bg-primary-navy text-white" : "bg-white text-primary-dark"}
+          bg-primary-navy text-xl rounded-xl m-1 p-2 hover:bg-primary-navy hover:text-white duration-500`}
             onClick={() => {
               setIsQualificationSelected(true);
               setIsAadharCardSelected(false);
@@ -93,8 +93,8 @@ const AdminDashboardServiceProviderDetails = ({
           >
             Qualifications
           </button>
-          <button className={`${aadharCard ? "bg-primary-navy" : "bg-white text-primary-dark"}
-          bg-primary-navy text-xl text-white rounded-xl m-1 p-2 hover:bg-primary-navy hover:text-white duration-500`}
+          <button className={`${aadharCard ? "bg-primary-navy text-white" : "bg-white text-primary-dark"}
+          bg-primary-navy text-xl rounded-xl m-1 p-2 hover:bg-primary-navy hover:text-white duration-500`}
             onClick={() => {
               setIsQualificationSelected(false);
               setIsAadharCardSelected(true);
@@ -103,8 +103,8 @@ const AdminDashboardServiceProviderDetails = ({
           >
             Aadhar Card
           </button>
-          <button className={`${panCard ? "bg-primary-navy" : "bg-white text-primary-dark"}
-          bg-primary-navy text-xl text-white rounded-xl m-1 p-2 hover:bg-primary-navy hover:text-white duration-500`}
+          <button className={`${panCard ? "bg-primary-navy text-white" : "bg-white text-primary-dark"}
+          bg-primary-navy text-xl rounded-xl m-1 p-2 hover:bg-primary-navy hover:text-white duration-500`}
             onClick={() => {
               setIsQualificationSelected(false);
               setIsAadharCardSelected(false);
