@@ -18,6 +18,8 @@ const AdminLayout = ({ children }) => {
         );
     } else if (isUserLoggedIn === false) {
       router.replace("/admin/login");
+    } else {
+      router.replace("/");
     }
   }, [pathname, isUserLoggedIn, userDetails]);
   return children;
