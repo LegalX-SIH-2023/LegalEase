@@ -11,7 +11,7 @@ const UserDashboardLayout = ({ children }) => {
   const pathname = usePathname();
   useEffect(() => {
     if (isUserLoggedIn === true && userDetails?.role !== USER_ROLES.admin) {
-      pathname === "/dashboard" && router.push("/dashboard/profile");
+      pathname === "/dashboard" && router.replace("/dashboard/profile");
     } else if (isUserLoggedIn === false) {
       router.replace("/login");
     }
