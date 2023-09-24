@@ -4,8 +4,10 @@ import CloseIcon from "./assets/closeIcon";
 import AddIcon from "./assets/addIcon";
 import httpRequest from "@/utils/httpRequest";
 import { HTTP_METHODS } from "@/constants/httpMethods";
+import { useRouter } from "next/navigation";
 
 const Verification = () => {
+  const router = useRouter();
   const [imageData, setImageData] = useState(null);
   const [profilePicture, setprofilePicture] = useState(null);
   const [currentSkill, setCurrentSkill] = useState("");
@@ -87,7 +89,8 @@ const Verification = () => {
       true
     ).then((res) => {
       if (res.success) {
-        alert(res.message);
+        router.replace("/dashboard/profile");
+        // alert(res.message);
       } else {
         alert(res.message);
       }

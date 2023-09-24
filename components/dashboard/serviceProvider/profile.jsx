@@ -3,6 +3,7 @@ import { HTTP_METHODS } from "@/constants/httpMethods";
 import { VERIFICATION_STATUS } from "@/constants/verificationStatus";
 import { AuthContext } from "@/providers/contextProvider";
 import httpRequest from "@/utils/httpRequest";
+import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 
 const DashboardServiceProviderProfile = () => {
@@ -36,6 +37,10 @@ const DashboardServiceProviderProfile = () => {
       return "text-red-500 bg-red-100";
     else return "text-yellow-500 bg-yellow-100";
   };
+
+  const [qualifications, setIsQualificationSelected] = useState(true);
+  const [aadharCard, setIsAadharCardSelected] = useState(false);
+  const [panCard, setIsPanCardSelected] = useState(false);
 
   return (
     <>
@@ -76,34 +81,93 @@ const DashboardServiceProviderProfile = () => {
           </div>
         </div>
 
-        {userDetails?.verificationStatus?.status ===
+        {(userDetails?.verificationStatus?.status ===
           VERIFICATION_STATUS?.Rejected ||
-          (userDetails?.verificationStatus?.status ===
-            VERIFICATION_STATUS?.Pending && (
-            <button className="bg-primary px-4 mt-4 text-white py-2 rounded-lg">
-              {userDetails?.verificationStatus?.status ===
-              VERIFICATION_STATUS?.Rejected
-                ? "Reverify Documents"
-                : "Complete Documents"}
-            </button>
-          ))}
+          userDetails?.verificationStatus?.status ===
+            VERIFICATION_STATUS?.Incomplete) && (
+          <p className="text-sm text-gray-700 mt-4">
+            Admin Review: {userDetails?.verificationStatus?.message}
+          </p>
+        )}
+
+        {(userDetails?.verificationStatus?.status ===
+          VERIFICATION_STATUS?.Rejected ||
+          userDetails?.verificationStatus?.status ===
+            VERIFICATION_STATUS?.Incomplete) && (
+          <div className="mt-1">
+            <Link href="/dashboard/profile/verification">
+              <button className="bg-primary px-4 text-white py-2 rounded-lg">
+                {userDetails?.verificationStatus?.status ===
+                VERIFICATION_STATUS?.Rejected
+                  ? "Reverify Documents"
+                  : "Complete Documents"}
+              </button>
+            </Link>
+          </div>
+        )}
 
         <div className="bg-primary-lightGray p-1 rounded-xl flex gap-2 mt-12">
-          <button className="bg-primary-navy text-xl text-white rounded-xl m-1 p-2">
+          <button
+            className={`${
+              qualifications ? "bg-primary-navy" : "bg-white text-primary-dark"
+            }
+          bg-primary-navy text-xl text-white rounded-xl m-1 p-2 hover:bg-primary-navy hover:text-white duration-500`}
+            onClick={() => {
+              setIsQualificationSelected(true);
+              setIsAadharCardSelected(false);
+              setIsPanCardSelected(false);
+            }}
+          >
             Qualifications
           </button>
-          <button className="bg-white text-xl rounded-xl m-1 p-2">
+          <button
+            className={`${
+              aadharCard ? "bg-primary-navy" : "bg-white text-primary-dark"
+            }
+          bg-primary-navy text-xl text-white rounded-xl m-1 p-2 hover:bg-primary-navy hover:text-white duration-500`}
+            onClick={() => {
+              setIsQualificationSelected(false);
+              setIsAadharCardSelected(true);
+              setIsPanCardSelected(false);
+            }}
+          >
             Aadhar Card
           </button>
-          <button className="bg-white text-xl rounded-xl m-1 p-2">
+          <button
+            className={`${
+              panCard ? "bg-primary-navy" : "bg-white text-primary-dark"
+            }
+          bg-primary-navy text-xl text-white rounded-xl m-1 p-2 hover:bg-primary-navy hover:text-white duration-500`}
+            onClick={() => {
+              setIsQualificationSelected(false);
+              setIsAadharCardSelected(false);
+              setIsPanCardSelected(true);
+            }}
+          >
             Pan Card
           </button>
         </div>
         <div>
-          {userDetails?.documents && (
+          {userDetails?.documents && qualifications && (
             <iframe
-              src={userDetails?.documents.panCard.path + "#toolbar=0"}
-              className="w-[400px] h-[400px] m-4 mt-8 rounded-xl border-none"
+              src={userDetails?.documents.qualification.path}
+              className="md:w-[400px] md:h-[600px] h-[300px] w-[300px] m-4 mt-8 rounded-xl border-none"
+              type="application/pdf"
+              allow="fullscreen"
+            />
+          )}
+          {userDetails?.documents && aadharCard && (
+            <iframe
+              src={userDetails?.documents.aadharCard.path}
+              className="md:w-[400px] md:h-[500px] h-[300px] w-[300px] m-4 mt-8 rounded-xl border-none"
+              type="application/pdf"
+              allow="fullscreen"
+            />
+          )}
+          {userDetails?.documents && panCard && (
+            <iframe
+              src={userDetails?.documents.panCard.path}
+              className="md:w-[400px] md:h-[600px] h-[300px] w-[300px] m-4 mt-8 rounded-xl border-none"
               type="application/pdf"
               allow="fullscreen"
             />
