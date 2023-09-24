@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 const ContextProvider = ({ children }) => {
   //Common States
   const [isLoading, setIsLoading] = useState(false);
-  const [isUserLoggedIn, setUserLoggedIn] = useState(false);
+  const [isUserLoggedIn, setUserLoggedIn] = useState();
 
   //Auth States
   const [userDetails, setUserDetails] = useState(null);

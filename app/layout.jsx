@@ -8,8 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "LegalConnect",
-  description:
-    "Earn, Consult, Automate & Learn",
+  description: "Earn, Consult, Automate & Learn",
 };
 
 export default function RootLayout({ children }) {
@@ -18,9 +17,9 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <AppProviders>
           {/* <dispatchEvent> */}
-            <Navbar/>
-            <div>{children}</div>
-            <Footer />
+          <Navbar />
+          <div className="pt-[68px]">{children}</div>
+          <Footer />
           {/* </dispatchEvent> */}
         </AppProviders>
       </body>

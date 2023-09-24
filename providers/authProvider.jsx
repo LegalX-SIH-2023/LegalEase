@@ -14,6 +14,8 @@ const AuthProvider = ({ children }) => {
       if (res.success) {
         setUserDetails(res.data.user);
         setUserLoggedIn(true);
+      } else {
+        setUserLoggedIn(false);
       }
     });
   }, []);
