@@ -1,17 +1,17 @@
 "use client";
 
 import React, { useContext, useEffect, useState } from "react";
-// import { BiUser } from "react-icons/bi";
-// import { MdOutlineMailOutline, MdLockOutline } from "react-icons/md";
+import { MdOutlineMailOutline, MdLockOutline } from "react-icons/md";
 import Image from "next/image";
-// import { Link, useNavigate } from "next/link";
 import Link from "next/link";
 import { HTTP_METHODS } from "@/constants/httpMethods";
 import httpRequest from "@/utils/httpRequest";
-// import httprequest from "../utils/req";
+import { useRouter } from "next/navigation";
+import { CommonContext } from "@/providers/contextProvider";
 
 const Login = () => {
-  //   const navigate = useNavigate();
+  const { isUserLoggedIn, setAuthCheck } = useContext(CommonContext);
+  const router = useRouter();
   const [user, setUser] = useState(0);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,22 +27,18 @@ const Login = () => {
     ).then((res) => {
       if (res.success) {
         alert(res.message);
+        setAuthCheck(true)
       } else {
         alert(res.message);
       }
     });
   };
 
-  //   useEffect(() => {
-  //     httprequest(`/api/${user ? "serviceprovider" : "client"}/getDetails`, "GET").then(
-  //       (res) => {
-  //         if (res.success) {
-  //           navigate(`/${user ? "serviceprovider" : "client"}`);
-  //         } else {
-  //         }
-  //       }
-  //     );
-  //   }, []);
+  useEffect(() => {
+    if (isUserLoggedIn) {
+      router.replace("/dashboard");
+    }
+  }, [isUserLoggedIn]);
   return (
     <main className=" font-poppins">
       <div className="grid grid-flow-row gap-4 sm:gap-0 sm:grid-cols-2 h-screen">
@@ -96,10 +92,10 @@ const Login = () => {
                 Your Email
               </label>
               <div className=" relative overflow-hidden">
-                {/* <MdOutlineMailOutline
+                <MdOutlineMailOutline
                   size={18}
                   className="absolute top-4 left-3 text-[#929298]"
-                ></MdOutlineMailOutline> */}
+                ></MdOutlineMailOutline>
                 <input
                   className=" border text-xs focus:outline-none w-full pl-9 py-4 rounded-md"
                   type="email"
@@ -113,10 +109,10 @@ const Login = () => {
                 Password
               </label>
               <div className=" relative overflow-hidden">
-                {/* <MdLockOutline
+                <MdLockOutline
                   size={18}
                   className="absolute top-4 left-3 text-[#929298]"
-                ></MdLockOutline> */}
+                ></MdLockOutline>
                 <input
                   className=" border text-xs focus:outline-none w-full pl-9 py-4 rounded-md"
                   type="password"

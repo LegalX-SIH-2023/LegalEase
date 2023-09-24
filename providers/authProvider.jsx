@@ -6,19 +6,22 @@ import httpRequest from "@/utils/httpRequest";
 import { HTTP_METHODS } from "@/constants/httpMethods";
 
 const AuthProvider = ({ children }) => {
-  const { setUserLoggedIn } = useContext(CommonContext);
+  const { authCheck, setAuthCheck, setUserLoggedIn } =
+    useContext(CommonContext);
   const { setUserDetails } = useContext(AuthContext);
 
   useEffect(() => {
-    httpRequest(`/api/authCheck`, HTTP_METHODS.GET).then((res) => {
-      if (res.success) {
-        setUserDetails(res.data.user);
-        setUserLoggedIn(true);
-      } else {
-        setUserLoggedIn(false);
-      }
-    });
-  }, []);
+    authCheck &&
+      httpRequest(`/api/authCheck`, HTTP_METHODS.GET).then((res) => {
+        if (res.success) {
+          setUserDetails(res.data.user);
+          setUserLoggedIn(true);
+        } else {
+          setUserLoggedIn(false);
+        }
+        setAuthCheck(false);
+      });
+  }, [authCheck]);
   return children;
 };
 
