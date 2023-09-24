@@ -3,8 +3,8 @@ import { errorResponse, successResponse } from "@/utils/sendResponse";
 
 export const POST = async (req) => {
   try {
-    const serviceProviderId = await checkAuth(req);
-    if (!serviceProviderId) return errorResponse(403, "Please login first");
+    const userId = await checkAuth(req);
+    if (!userId) return errorResponse(403, "Please login first");
 
     const response = successResponse(200, "Logout Successful");
     response.cookies.delete("token");

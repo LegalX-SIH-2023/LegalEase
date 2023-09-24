@@ -50,7 +50,7 @@ const Hero = () => {
               />
             </div>
 
-            <p className="text-xl text-primary-mediumGray text-center md:text-left">
+            <p className="lext-lg md:text-xl text-primary-mediumGray text-center px-4 md:text-left">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />
               Obcaecati odio suscipit in hic exercitationem accusantium <br />{" "}
               dolorem iste itaque, animi, asperiores, ipsum facilis aperiam.

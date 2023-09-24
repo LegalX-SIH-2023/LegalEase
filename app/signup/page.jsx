@@ -51,7 +51,7 @@ const CreateAccount = () => {
               className="mx-auto max-w-full h-auto"
             />
             <h1 className="text-white text-center text-md sm:text-3xl mt-3">
-              <span className="text-primary">Create Account</span>
+              <span className="text-primary-navy">Create Account</span>
             </h1>
           </div>
         </div>
@@ -60,8 +60,8 @@ const CreateAccount = () => {
             <button
               className={`${
                 user === 0
-                  ? "bg-primary text-white"
-                  : "bg-white text-primary border-2 border-[#2EADC5]"
+                  ? "bg-primary-navy text-white"
+                  : "bg-white text-primary-navy border-2 border-[#2EADC5]"
               } px-4 py-1 rounded-md font-bold `}
               onClick={() => setUser(0)}
             >
@@ -70,8 +70,8 @@ const CreateAccount = () => {
             <button
               className={`${
                 user === 1
-                  ? "bg-primary text-white"
-                  : "bg-white text-primary border-2 border-primary"
+                  ? "bg-primary-navy text-white"
+                  : "bg-white text-primary-navy border-2 border-primary-navy"
               } px-4 py-1 rounded-md font-bold`}
               onClick={() => setUser(1)}
             >
@@ -137,13 +137,13 @@ const CreateAccount = () => {
               </div>
             </div>
 
-            <button className="bg-primary hover:bg-primary-dark ease-in-out text-xs py-4 rounded-md font-bold text-white mt-2">
+            <button className="bg-primary-navy hover:text-primary-lightGray ease-in-out text-xs py-4 rounded-md font-bold text-white mt-2">
               Submit
             </button>
             <div className="mt-4">
               <p className="text-xs font-semibold text-[#929298] text-center">
                 already registered ?{" "}
-                <Link href="/login" className="text-primary underline">
+                <Link href="/login" className="text-primary-navy underline">
                   Sign in
                 </Link>
               </p>
