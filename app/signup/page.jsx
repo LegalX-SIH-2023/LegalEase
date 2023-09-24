@@ -137,7 +137,7 @@ const CreateAccount = () => {
               </div>
             </div>
 
-            <button className="bg-primary-navy hover:text-primary-lightGray ease-in-out text-xs py-4 rounded-md font-bold text-white mt-2">
+            <button className="bg-primary-navy text-sm hover:shadow-md ease-in-out py-4 rounded-md font-bold text-white mt-2">
               Submit
             </button>
             <div className="mt-4">
