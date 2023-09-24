@@ -4,19 +4,20 @@ import { useContext, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { USER_ROLES } from "@/constants/userRoles";
 
-const UserDashboardLayout = ({ children }) => {
+const AdminLayout = ({ children }) => {
   const { isUserLoggedIn } = useContext(CommonContext);
   const { userDetails } = useContext(AuthContext);
   const router = useRouter();
   const pathname = usePathname();
   useEffect(() => {
-    if (isUserLoggedIn === true && userDetails?.role !== USER_ROLES.admin) {
-      pathname === "/dashboard" && router.push("/dashboard/profile");
+    console.log(isUserLoggedIn,userDetails)
+    if (isUserLoggedIn === true && userDetails?.role === USER_ROLES.admin) {
+      (pathname === "/admin" || pathname === "/admin/dashboard") && router.push("/admin/dashboard/serviceProviders/pendingVerifications");
     } else if (isUserLoggedIn === false) {
-      router.replace("/login");
+      router.replace("/admin/login");
     }
-  }, [isUserLoggedIn, userDetails]);
+  }, [ isUserLoggedIn, userDetails]);
   return children;
 };
 
-export default UserDashboardLayout;
+export default AdminLayout;

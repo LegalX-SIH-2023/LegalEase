@@ -50,10 +50,9 @@ const Hero = () => {
               />
             </div>
 
-            <p className="lext-lg md:text-xl text-primary-mediumGray text-center px-4 md:text-left">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />
-              Obcaecati odio suscipit in hic exercitationem accusantium <br />{" "}
-              dolorem iste itaque, animi, asperiores, ipsum facilis aperiam.
+            <p className="text-xl text-primary-mediumGray text-center md:text-left">
+              A comprehensive resource for connecting you with <br /> the ideal attorney to address all your legal requirements, <br /> we recognize that selecting the right attorney can be <br /> an overwhelming and daunting task{" "}
+              and this is precisely <br /> where we step in to alleviate the burden.
             </p>
             <button className="p-2 bg-primary-navy rounded-xl px-4 text-xl font-semibold text-white hover:shadow-xl">
               Explore

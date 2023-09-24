@@ -42,7 +42,7 @@ export default function ServiceProviderCard(props) {
           </div>
         </div>
 
-        <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+        <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
         <div className="flex justify-center">
           <Link
             href={`/admin/dashboard/serviceProviders/${id}`}
