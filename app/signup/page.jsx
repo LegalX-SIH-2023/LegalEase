@@ -38,7 +38,7 @@ const CreateAccount = () => {
   }, [isUserLoggedIn]);
   return (
     <main className=" font-poppins">
-      <div className="grid grid-flow-row gap-4 sm:gap-0 sm:grid-cols-2 h-[calc(100vh-68px)]">
+      <div className="grid grid-flow-row gap-4 sm:gap-0 sm:grid-cols-2 min-h-[calc(100vh-68px)]">
         <div className="flex justify-center align-middle bg-[#FFFFFF] pb-2 sm:pb-0">
           <div className="m-auto">
             {/* <img src={voiceImage} alt="" /> */}

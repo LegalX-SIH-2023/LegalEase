@@ -98,7 +98,7 @@ const Verification = () => {
   };
 
   return (
-    <div>
+    <div className="p-5">
       <form
         onSubmit={(e) => {
           e.preventDefault();

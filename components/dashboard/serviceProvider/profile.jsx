@@ -85,8 +85,9 @@ const DashboardServiceProviderProfile = () => {
           VERIFICATION_STATUS?.Rejected ||
           userDetails?.verificationStatus?.status ===
             VERIFICATION_STATUS?.Incomplete) && (
-          <p className="text-sm text-gray-700 mt-4">
-            Admin Review: {userDetails?.verificationStatus?.message}
+          <p className="text-sm text-gray-700 mt-4 mb-2">
+            <span className="font-semibold">Admin Review: </span>
+            {userDetails?.verificationStatus?.message}
           </p>
         )}
 
