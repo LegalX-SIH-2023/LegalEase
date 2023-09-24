@@ -14,9 +14,9 @@ const Services = () => {
                     <div className='flex justify-center items-center w-[75px] h-[75px] rounded-full bg-primary-navy p-2'>
                         <GiTakeMyMoney className='text-3xl text-white' />
                     </div>
-                    <div className="">
+                    <div className="w-[275px]">
                         <p className='text-xl text-[#D47C42] font-semibold text-center'>Earn</p>
-                        <p className='text-center mt-1'>Lorem ipsum dolor sit amet <br /> consectetur, adipisicing elit. <br /> Doloremquae animi distinctio?</p>
+                        <p className='text-center mt-1 text-sm'>We offer a unique incentive program for legal service providers who join our platform. By choosing our platform, lawyers can expand their reach and grow their practice while receiving incentives.</p>
                     </div>
                 </div>
                 {/* services card */}
@@ -24,9 +24,9 @@ const Services = () => {
                     <div className='flex justify-center items-center w-[75px] h-[75px] rounded-full bg-primary-navy p-2'>
                         <BsChatDots className='text-3xl text-white' />
                     </div>
-                    <div className="">
+                    <div className="w-[275px]">
                         <p className='text-xl text-[#D47C42] font-semibold text-center'>Consult</p>
-                        <p className='text-center mt-1'>Lorem ipsum dolor sit amet <br /> consectetur, adipisicing elit. <br /> Doloremquae animi distinctio?</p>
+                        <p className='text-center mt-1 text-sm'>We understand that every legal situation is unique.That's why we offer a free initia consultation, that allows you to assess whether the attorney is the right fit for you before committing to any services.</p>
                     </div>
                 </div>
                 {/* services card */}
@@ -34,9 +34,9 @@ const Services = () => {
                     <div className='flex justify-center items-center w-[75px] h-[75px] rounded-full bg-primary-navy p-2'>
                         <MdOutlineAutoAwesome className='text-3xl text-white' />
                     </div>
-                    <div className="">
+                    <div className="w-[275px]">
                         <p className='text-xl text-[#D47C42] font-semibold text-center'>Automate</p>
-                        <p className='text-center mt-1'>Lorem ipsum dolor sit amet <br /> consectetur, adipisicing elit. <br /> Doloremquae animi distinctio?</p>
+                        <p className='text-center mt-1 text-sm'>Our platform offers automated document creation services to streamline the process. Say goodbye to the hassle of drafting contracts, wills, or other legal documents on your own.</p>
                     </div>
                 </div>
                 {/* services card */}
@@ -44,9 +44,9 @@ const Services = () => {
                     <div className='flex justify-center items-center w-[75px] h-[75px] rounded-full bg-primary-navy p-2'>
                         <SiFuturelearn className='text-3xl text-white' />
                     </div>
-                    <div className="">
+                    <div className="w-[275px]">
                         <p className='text-xl text-[#D47C42] font-semibold text-center'>Learn</p>
-                        <p className='text-center mt-1'>Lorem ipsum dolor sit amet <br /> consectetur, adipisicing elit. <br /> Doloremquae animi distinctio?</p>
+                        <p className='text-center mt-1 text-sm'>LegalConnect isn't just about  connecting you  with lawyers; it's also  about empowering you with knowledge. We provide valuable legal resources to help you understand your rights.</p>
                     </div>
                 </div>
             </section>
