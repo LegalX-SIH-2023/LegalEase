@@ -41,7 +41,7 @@ const AdminLogin = () => {
   return (
     <main className=" font-poppins">
       <div className="container mx-auto flex flex-col h-[90vh] justify-center items-center px-4">
-        <h2 className="text-3xl font-bold text-center mb-6">Admin</h2>
+        <h2 className="text-4xl font-bold text-center text-primary-navy mb-6">Admin</h2>
         <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
           <form
             className="p-6"
@@ -86,7 +86,7 @@ const AdminLogin = () => {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="bg-primary hover:bg-primary-dark text-white py-2 px-4 rounded-md transition-colors duration-300"
+                className="bg-primary-navy hover:text-primary-lightGray text-white py-2 px-4 rounded-md transition-colors duration-300"
               >
                 Submit
               </button>

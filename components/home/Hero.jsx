@@ -11,7 +11,7 @@ const Hero = () => {
     <>
       <div className="bg-primary-lightGray h-full rounded-bl-[100q] md:h-[100vh] bg-fixed md:pb-0 pb-4">
         {/* <Navbar /> */}
-        <section className="flex md:flex-row flex-col-reverse justify-around items-center md:gap-0 gap-8 pt-32">
+        <section className="flex md:flex-row flex-col-reverse justify-around items-center md:gap-0 gap-8 pt-32 -mt-2">
           <div className="flex flex-col items-center md:items-start gap-4">
             <div className="min-h-[96px] pl-4 md:pl-0">
               <Typewriter
@@ -50,7 +50,7 @@ const Hero = () => {
               />
             </div>
 
-            <p className="text-xl text-primary-mediumGray text-center md:text-left">
+            <p className="lext-lg md:text-xl text-primary-mediumGray text-center px-4 md:text-left">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />
               Obcaecati odio suscipit in hic exercitationem accusantium <br />{" "}
               dolorem iste itaque, animi, asperiores, ipsum facilis aperiam.
