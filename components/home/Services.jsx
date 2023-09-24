@@ -26,7 +26,7 @@ const Services = () => {
                     </div>
                     <div className="w-[275px]">
                         <p className='text-xl text-[#D47C42] font-semibold text-center'>Consult</p>
-                        <p className='text-center mt-1 text-sm'>We understand that every legal situation is unique.That's why we offer a free initia consultation, that allows you to assess whether the attorney is the right fit for you before committing to any services.</p>
+                        <p className='text-center mt-1 text-sm'>We understand that every legal situation is unique.That&apos;s why we offer a free initia consultation, that allows you to assess whether the attorney is the right fit for you before committing to any services.</p>
                     </div>
                 </div>
                 {/* services card */}
@@ -46,7 +46,7 @@ const Services = () => {
                     </div>
                     <div className="w-[275px]">
                         <p className='text-xl text-[#D47C42] font-semibold text-center'>Learn</p>
-                        <p className='text-center mt-1 text-sm'>LegalConnect isn't just about  connecting you  with lawyers; it's also  about empowering you with knowledge. We provide valuable legal resources to help you understand your rights.</p>
+                        <p className='text-center mt-1 text-sm'>LegalConnect isn&apos;t just about  connecting you  with lawyers; it&apos;s also  about empowering you with knowledge. We provide valuable legal resources to help you understand your rights.</p>
                     </div>
                 </div>
             </section>
