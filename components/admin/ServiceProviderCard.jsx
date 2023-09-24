@@ -10,7 +10,7 @@ export default function ServiceProviderCard(props) {
 
   return (
     <div className=" p-4">
-      <div className=" rounded-lg shadow-md p-4 mx-auto bg-primary-lightGray shodow-xl  p-4 shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 border-2   rounded-lg max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
+      <div className=" rounded-lg p-4 mx-auto bg-primary-lightGray shodow-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 border-2  max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
         <div className="text-center flex ">
           <img
             src={imageUrl}

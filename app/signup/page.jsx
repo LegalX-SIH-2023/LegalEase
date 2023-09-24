@@ -25,8 +25,7 @@ const CreateAccount = () => {
       { name, email, password }
     ).then((res) => {
       if (res.success) {
-        alert(res.message);
-        setAuthCheck(true)
+        setAuthCheck(true);
       } else {
         alert(res.message);
       }
@@ -39,7 +38,7 @@ const CreateAccount = () => {
   }, [isUserLoggedIn]);
   return (
     <main className=" font-poppins">
-      <div className="grid grid-flow-row gap-4 sm:gap-0 sm:grid-cols-2 h-screen">
+      <div className="grid grid-flow-row gap-4 sm:gap-0 sm:grid-cols-2 h-[calc(100vh-68px)]">
         <div className="flex justify-center align-middle bg-[#FFFFFF] pb-2 sm:pb-0">
           <div className="m-auto">
             {/* <img src={voiceImage} alt="" /> */}
@@ -51,7 +50,7 @@ const CreateAccount = () => {
               className="mx-auto max-w-full h-auto"
             />
             <h1 className="text-white text-center text-md sm:text-3xl mt-3">
-              <span className="text-primary-navy">Create Account</span>
+              <span className="text-primary-navy font-semibold">Create Account</span>
             </h1>
           </div>
         </div>
@@ -137,7 +136,7 @@ const CreateAccount = () => {
               </div>
             </div>
 
-            <button className="bg-primary-navy hover:text-primary-lightGray ease-in-out text-xs py-4 rounded-md font-bold text-white mt-2">
+            <button className="bg-primary-navy text-sm hover:shadow-md ease-in-out py-4 rounded-md font-bold text-white mt-2">
               Submit
             </button>
             <div className="mt-4">
