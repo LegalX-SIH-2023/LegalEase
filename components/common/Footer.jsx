@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <>
+    <div>
       <section className="flex flex-wrap bg-primary-lightGray justify-evenly gap-8 rounded-tr-[100q] pb-8 mt-20">
         {/* first */}
         <div className="font-bold text-xl md:text-3xl flex items-center flex-col gap-4 pt-8">
@@ -67,7 +67,7 @@ const Footer = () => {
         <span className="text-primary-navy">Connect</span> - 2023 All Rights
         Reserved
       </p>
-    </>
+    </div>
   );
 };
 

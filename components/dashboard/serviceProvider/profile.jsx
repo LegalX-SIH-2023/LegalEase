@@ -68,7 +68,14 @@ const DashboardServiceProviderProfile = () => {
             className="h-[150px] w-[150px] p-4 bg-primary-lightGray rounded-full"
           />
           <div className="flex flex-col gap-1">
-            <p className="text- text-3xl text-primary font-semibold text-center">
+            <p
+              className={`text-3xl text-primary font-semibold ${
+                userDetails?.verificationStatus.status ===
+                VERIFICATION_STATUS.Incomplete
+                  ? " text-center"
+                  : ""
+              }`}
+            >
               {userDetails?.name}
             </p>
             {userDetails?.verificationStatus.status !==

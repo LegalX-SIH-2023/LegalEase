@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
         <AppProviders>
           {/* <dispatchEvent> */}
           <Navbar />
-          <div className="pt-[68px]">{children}</div>
+          <div className="pt-[64px] min-h-[calc(100vh-340px)]">{children}</div>
           <Footer />
           {/* </dispatchEvent> */}
         </AppProviders>
