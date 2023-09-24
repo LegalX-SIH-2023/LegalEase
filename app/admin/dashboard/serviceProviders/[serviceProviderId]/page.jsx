@@ -7,9 +7,10 @@ const AdminDashboardServiceProviderDetails = ({
   params: { serviceProviderId },
 }) => {
   const [serviceProviderDetails, setServiceProvideDetails] = useState({});
-  const [qualifications, setIsQualificationSelected] = useState(true)
-  const [aadharCard, setIsAadharCardSelected] = useState(false)
-  const [panCard, setIsPanCardSelected] = useState(false)
+  const [qualifications, setIsQualificationSelected] = useState(true);
+  const [aadharCard, setIsAadharCardSelected] = useState(false);
+  const [panCard, setIsPanCardSelected] = useState(false);
+  const [reviewMessage, setReviewMessage] = useState();
 
   useEffect(() => {
     httpRequest(
@@ -61,7 +62,6 @@ const AdminDashboardServiceProviderDetails = ({
         <div className="flex justify-center items-center gap-10 p-2">
           <img
             src={serviceProviderDetails.profilePicture}
-
             className="h-[150px] w-[150px] p-4 bg-primary-lightGray rounded-full"
           />
           <div className="flex flex-col gap-1">
@@ -72,7 +72,7 @@ const AdminDashboardServiceProviderDetails = ({
               Experience: {serviceProviderDetails.experience} yrs
             </p>
             <p className="text- text-xl text-primary-mediumGray">
-              Skills: {" "}
+              Skills:{" "}
               {serviceProviderDetails.skills?.map((skill, i) => (
                 <span key={`service_provider_skill_${i}`}>
                   {i ? `, ${skill}` : skill}
@@ -83,7 +83,12 @@ const AdminDashboardServiceProviderDetails = ({
         </div>
 
         <div className="bg-primary-lightGray p-1 rounded-xl flex gap-2 mt-12">
-          <button className={`${qualifications ? "bg-primary-navy text-white" : "bg-white text-primary-dark"}
+          <button
+            className={`${
+              qualifications
+                ? "bg-primary-navy text-white"
+                : "bg-white text-primary-dark"
+            }
           bg-primary-navy text-xl rounded-xl m-1 p-2 hover:bg-primary-navy hover:text-white duration-500`}
             onClick={() => {
               setIsQualificationSelected(true);
@@ -93,7 +98,12 @@ const AdminDashboardServiceProviderDetails = ({
           >
             Qualifications
           </button>
-          <button className={`${aadharCard ? "bg-primary-navy text-white" : "bg-white text-primary-dark"}
+          <button
+            className={`${
+              aadharCard
+                ? "bg-primary-navy text-white"
+                : "bg-white text-primary-dark"
+            }
           bg-primary-navy text-xl rounded-xl m-1 p-2 hover:bg-primary-navy hover:text-white duration-500`}
             onClick={() => {
               setIsQualificationSelected(false);
@@ -103,7 +113,12 @@ const AdminDashboardServiceProviderDetails = ({
           >
             Aadhar Card
           </button>
-          <button className={`${panCard ? "bg-primary-navy text-white" : "bg-white text-primary-dark"}
+          <button
+            className={`${
+              panCard
+                ? "bg-primary-navy text-white"
+                : "bg-white text-primary-dark"
+            }
           bg-primary-navy text-xl rounded-xl m-1 p-2 hover:bg-primary-navy hover:text-white duration-500`}
             onClick={() => {
               setIsQualificationSelected(false);
@@ -141,11 +156,31 @@ const AdminDashboardServiceProviderDetails = ({
           )}
         </div>
         <div className="flex md:flex-row flex-col items-center justify-center mt-20 mdf:gap-0 gap-2">
-          <label htmlFor="Join Us:" className='text-3xl text-primary-navy font-semibold mr-4'>Message:</label>
+          <label
+            htmlFor="Join Us:"
+            className="text-3xl text-primary-navy font-semibold mr-4"
+          >
+            Message:
+          </label>
           <div className="flex gap-2">
-            <input type="email" placeholder='Message..' className='rounded-xl bg-primary-lightGray md:w-[300px] w-[200px] p-2' />
-            <button className='font-semibold px-2 py-1 bg-red-500 rounded-xl text-white text-xl hover:shadow-md' onClick={() => rejectVerification("Sorry")}>Reject</button>
-            <button className='p-2 bg-green-500 rounded-xl px-4 text-xl font-semibold text-white hover:shadow-md' onClick={() => acceptVerification("Welcome")}>Accept</button>
+            <input
+              type="email"
+              placeholder="Message.."
+              className="rounded-xl bg-primary-lightGray md:w-[300px] w-[200px] p-2"
+              onChange={(e) => setReviewMessage(e.target.value)}
+            />
+            <button
+              className="font-semibold px-2 py-1 bg-red-500 rounded-xl text-white text-xl hover:shadow-md"
+              onClick={() => rejectVerification(reviewMessage)}
+            >
+              Reject
+            </button>
+            <button
+              className="p-2 bg-green-500 rounded-xl px-4 text-xl font-semibold text-white hover:shadow-md"
+              onClick={() => acceptVerification(reviewMessage)}
+            >
+              Accept
+            </button>
           </div>
         </div>
       </section>
