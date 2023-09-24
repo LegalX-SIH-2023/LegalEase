@@ -11,7 +11,7 @@ const Hero = () => {
     <>
       <div className="bg-primary-lightGray h-full rounded-bl-[100q] md:h-[100vh] bg-fixed md:pb-0 pb-4">
         {/* <Navbar /> */}
-        <section className="flex md:flex-row flex-col-reverse justify-around items-center md:gap-0 gap-8 pt-32">
+        <section className="flex md:flex-row flex-col-reverse justify-around items-center md:gap-0 gap-8 pt-32 -mt-2">
           <div className="flex flex-col items-center md:items-start gap-4">
             <div className="min-h-[96px] pl-4 md:pl-0">
               <Typewriter
