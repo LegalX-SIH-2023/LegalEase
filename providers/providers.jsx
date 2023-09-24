@@ -1,11 +1,14 @@
 import QueryProvider from "@/providers/queryClientProvider";
 import AuthProvider from "@/providers/authProvider";
+import ContextProvider, { CommonContext } from "./contextProvider";
 
 const AppProviders = ({ children }) => {
   return (
-    <QueryProvider>
-      <AuthProvider>{children}</AuthProvider>
-    </QueryProvider>
+    <ContextProvider>
+      <QueryProvider>
+        <AuthProvider>{children}</AuthProvider>
+      </QueryProvider>
+    </ContextProvider>
   );
 };
 

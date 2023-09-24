@@ -11,11 +11,11 @@ export const POST = async (req) => {
 
     await connectDB();
 
-    let admin = await Admin.findOne({ email });
+    let admin = await Admin.findOne({ email })
     if (admin)
       return errorResponse(409, "Account already exist with this email");
 
-      admin = await Admin.create({
+    admin = await Admin.create({
       name,
       email,
       password,

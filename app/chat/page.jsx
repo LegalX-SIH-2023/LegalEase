@@ -75,15 +75,15 @@ const page = () => {
               </div>
             </div>
             <form>
-            <div class="w-full container  grid grid-cols-12 justify-center items-center sm:grid-cols-6">
+            <div className="w-full container  grid grid-cols-12 justify-center items-center sm:grid-cols-6">
            
-                <div class="col-span-8 sm:col-span-4" >
-                    <input type="text" placeholder="Type a message" class="w-full border-2 border-gray-300 p-2 rounded-lg outline-none focus:border-blue-400"/>
+                <div className="col-span-8 sm:col-span-4" >
+                    <input type="text" placeholder="Type a message" className="w-full border-2 border-gray-300 p-2 rounded-lg outline-none focus:border-blue-400"/>
                 </div>
                
-                <div class="col-span-2 mx-1 flex gap-3 sm:gap-1">
-                <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"><FontAwesomeIcon icon={faPaperclip}/> </button>
-                <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"><FontAwesomeIcon icon={faPaperPlane} /></button>
+                <div className="col-span-2 mx-1 flex gap-3 sm:gap-1">
+                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"><FontAwesomeIcon icon={faPaperclip}/> </button>
+                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"><FontAwesomeIcon icon={faPaperPlane} /></button>
                     
                 </div>
             </div>

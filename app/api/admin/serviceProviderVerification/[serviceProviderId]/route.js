@@ -1,9 +1,9 @@
 import { connectDB } from "@/config/database";
+import { VERIFICATION_STATUS } from "@/constants/verificationStatus";
 import Admin from "@/models/admin";
 import ServiceProvider from "@/models/serviceProvider";
 import checkAuth from "@/utils/checkAuth";
 import { errorResponse, successResponse } from "@/utils/sendResponse";
-import { getUrl } from "@/utils/storage";
 
 export const GET = async (req, { params: { serviceProviderId } }) => {
   try {
@@ -27,14 +27,10 @@ export const GET = async (req, { params: { serviceProviderId } }) => {
 
     const { aadharCard, panCard, qualification } = serviceProvider.documents;
 
-    serviceProvider.profilePicture = await getUrl(
-      serviceProvider.profilePicture
-    );
-    serviceProvider.documents.aadharCard.path = await getUrl(aadharCard.path);
-    serviceProvider.documents.panCard.path = await getUrl(panCard.path);
-    serviceProvider.documents.qualification.path = await getUrl(
-      qualification.path
-    );
+    serviceProvider.profilePicture = `/api/file/${serviceProvider.profilePicture}`;
+    serviceProvider.documents.aadharCard.path = `/api/file/${aadharCard.path}`;
+    serviceProvider.documents.panCard.path = `/api/file/${panCard.path}`;
+    serviceProvider.documents.qualification.path = `/api/file/${qualification.path}`;
 
     return successResponse(200, "Service Provider Details", serviceProvider);
   } catch (error) {
@@ -55,11 +51,19 @@ export const PATCH = async (req, { params: { serviceProviderId } }) => {
     const serviceProvider = await ServiceProvider.findById(serviceProviderId);
     if (!serviceProvider)
       return errorResponse(404, "Service Provider not found");
-    if (serviceProvider.isVerified)
+
+    if (
+      serviceProvider.verificationStatus.status === VERIFICATION_STATUS.Verified
+    )
       return errorResponse(409, "Service Provider Already Verified");
 
-    serviceProvider.verificationStatus = undefined;
-    serviceProvider.isVerified = true;
+    const { message } = await req.json();
+    if (!message) return errorResponse(400, "Please enter message");
+
+    serviceProvider.verificationStatus = {
+      status: VERIFICATION_STATUS.Verified,
+      message,
+    };
 
     await serviceProvider.save();
 
@@ -83,11 +87,18 @@ export const PUT = async (req, { params: { serviceProviderId } }) => {
     if (!serviceProvider)
       return errorResponse(404, "Service Provider not found");
 
-    const { message } = await req.json();
-    if (!message) return errorResponse(400, "Please enter rejection message");
+    if (
+      serviceProvider.verificationStatus.status === VERIFICATION_STATUS.Rejected
+    )
+      return errorResponse(409, "Service Provider Already Rejected");
 
-    serviceProvider.verificationStatus = { status: "Rejected", message };
-    serviceProvider.isVerified = false;
+    const { message } = await req.json();
+    if (!message) return errorResponse(400, "Please enter message");
+
+    serviceProvider.verificationStatus = {
+      status: VERIFICATION_STATUS.Rejected,
+      message,
+    };
 
     await serviceProvider.save();
 

@@ -1,17 +1,17 @@
 "use client";
 
 import React, { useContext, useEffect, useState } from "react";
-// import { BiUser } from "react-icons/bi";
-// import { MdOutlineMailOutline, MdLockOutline } from "react-icons/md";
+import { MdOutlineMailOutline, MdLockOutline } from "react-icons/md";
 import Image from "next/image";
-// import { Link, useNavigate } from "next/link";
 import Link from "next/link";
 import { HTTP_METHODS } from "@/constants/httpMethods";
 import httpRequest from "@/utils/httpRequest";
-// import httprequest from "../utils/req";
+import { useRouter } from "next/navigation";
+import { CommonContext } from "@/providers/contextProvider";
 
 const Login = () => {
-  //   const navigate = useNavigate();
+  const { isUserLoggedIn, setAuthCheck } = useContext(CommonContext);
+  const router = useRouter();
   const [user, setUser] = useState(0);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,26 +26,21 @@ const Login = () => {
       }
     ).then((res) => {
       if (res.success) {
-        alert(res.message);
+        setAuthCheck(true)
       } else {
         alert(res.message);
       }
     });
   };
 
-  //   useEffect(() => {
-  //     httprequest(`/api/${user ? "serviceprovider" : "client"}/getDetails`, "GET").then(
-  //       (res) => {
-  //         if (res.success) {
-  //           navigate(`/${user ? "serviceprovider" : "client"}`);
-  //         } else {
-  //         }
-  //       }
-  //     );
-  //   }, []);
+  useEffect(() => {
+    if (isUserLoggedIn) {
+      router.replace("/dashboard");
+    }
+  }, [isUserLoggedIn]);
   return (
     <main className=" font-poppins">
-      <div className="grid grid-flow-row gap-4 sm:gap-0 sm:grid-cols-2 h-screen">
+      <div className="grid grid-flow-row gap-4 sm:gap-0 sm:grid-cols-2 min-h-[calc(100vh-68px)]">
         <div className="flex justify-center align-middle bg-[#FFFFFF] pb-2 sm:pb-0">
           <div className="m-auto">
             {/* <img src={voiceImage} alt="" /> */}
@@ -57,7 +52,7 @@ const Login = () => {
               className="mx-auto max-w-full h-auto"
             />
             <h1 className="text-white text-center text-md sm:text-3xl mt-3">
-              <span className="text-primary">Login</span>
+              <span className="text-primary-navy font-semibold">Login</span>
             </h1>
           </div>
         </div>
@@ -66,8 +61,8 @@ const Login = () => {
             <button
               className={`${
                 user === 0
-                  ? "bg-primary text-white"
-                  : "bg-white text-primary border-2 border-primary"
+                  ? "bg-primary-navy text-white"
+                  : "bg-white text-primary-navy border-2 border-primary-navy"
               } px-4 py-1 rounded-md font-bold `}
               onClick={() => setUser(0)}
             >
@@ -76,8 +71,8 @@ const Login = () => {
             <button
               className={`${
                 user === 1
-                  ? "bg-primary text-white"
-                  : "bg-white text-primary border-2 border-primary"
+                  ? "bg-primary-navy text-white"
+                  : "bg-white text-primary-navy border-2 border-primary-navy"
               } px-4 py-1 rounded-md font-bold`}
               onClick={() => setUser(1)}
             >
@@ -96,10 +91,10 @@ const Login = () => {
                 Your Email
               </label>
               <div className=" relative overflow-hidden">
-                {/* <MdOutlineMailOutline
+                <MdOutlineMailOutline
                   size={18}
                   className="absolute top-4 left-3 text-[#929298]"
-                ></MdOutlineMailOutline> */}
+                ></MdOutlineMailOutline>
                 <input
                   className=" border text-xs focus:outline-none w-full pl-9 py-4 rounded-md"
                   type="email"
@@ -113,10 +108,10 @@ const Login = () => {
                 Password
               </label>
               <div className=" relative overflow-hidden">
-                {/* <MdLockOutline
+                <MdLockOutline
                   size={18}
                   className="absolute top-4 left-3 text-[#929298]"
-                ></MdLockOutline> */}
+                ></MdLockOutline>
                 <input
                   className=" border text-xs focus:outline-none w-full pl-9 py-4 rounded-md"
                   type="password"
@@ -125,13 +120,13 @@ const Login = () => {
                 />
               </div>
             </div>
-            <button className="bg-primary hover:bg-primary-dark ease-in-out text-xs py-4 rounded-md font-bold text-white mt-2">
+            <button className="bg-primary-navy text-sm hover:shadow-md ease-in-out  py-4 rounded-md font-bold text-white mt-2">
               Submit
             </button>
             <div className="mt-4">
               <p className="text-xs font-semibold text-[#929298] text-center">
                 new user ?{" "}
-                <Link href="/signup" className="text-primary underline">
+                <Link href="/signup" className="text-primary-navy underline">
                   Create Account
                 </Link>
               </p>

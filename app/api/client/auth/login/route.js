@@ -11,7 +11,7 @@ export const POST = async (req) => {
 
     await connectDB();
 
-    const client = await Client.findOne({ email }).select("+password");
+    const client = await Client.findOne({ email }).select("password");
     if (!client) return errorResponse(403, "Incorrect Credentials");
 
     const isPasswordMatch = await client.matchPassword(password);
