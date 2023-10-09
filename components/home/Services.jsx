@@ -16,7 +16,7 @@ const Services = () => {
                     </div>
                     <div className="w-[275px]">
                         <p className='text-xl text-[#D47C42] font-semibold text-center'>Earn</p>
-                        <p className='text-center mt-1 text-sm'>We offer a unique incentive program for legal service providers who join our platform. By choosing our platform, lawyers can expand their reach and grow their practice while receiving incentives.</p>
+                        <p className='text-center mt-1 text-sm'>We provide a distinctive incentive program to legal service providers who become part of our platform. By opting for our platform, lawyers can broaden their client base and enhance their practice, all while enjoying incentives.</p>
                     </div>
                 </div>
                 {/* services card */}
@@ -26,7 +26,7 @@ const Services = () => {
                     </div>
                     <div className="w-[275px]">
                         <p className='text-xl text-[#D47C42] font-semibold text-center'>Consult</p>
-                        <p className='text-center mt-1 text-sm'>We understand that every legal situation is unique.That&apos;s why we offer a free initia consultation, that allows you to assess whether the attorney is the right fit for you before committing to any services.</p>
+                        <p className='text-center mt-1 text-sm'>Acknowledging the uniqueness of every legal situation, we offer a complimentary initial consultation, enabling you to assess whether the attorney is the right fit for your needs before making any service commitments.</p>
                     </div>
                 </div>
                 {/* services card */}
@@ -36,7 +36,7 @@ const Services = () => {
                     </div>
                     <div className="w-[275px]">
                         <p className='text-xl text-[#D47C42] font-semibold text-center'>Automate</p>
-                        <p className='text-center mt-1 text-sm'>Our platform offers automated document creation services to streamline the process. Say goodbye to the hassle of drafting contracts, wills, or other legal documents on your own.</p>
+                        <p className='text-center mt-1 text-sm'>Our platform provides automated document creation services to simplify the process. Bid farewell to the inconvenience of drafting contracts, wills, or other legal documents by yourself..</p>
                     </div>
                 </div>
                 {/* services card */}
@@ -46,7 +46,7 @@ const Services = () => {
                     </div>
                     <div className="w-[275px]">
                         <p className='text-xl text-[#D47C42] font-semibold text-center'>Learn</p>
-                        <p className='text-center mt-1 text-sm'>LegalConnect isn&apos;t just about  connecting you  with lawyers; it&apos;s also  about empowering you with knowledge. We provide valuable legal resources to help you understand your rights.</p>
+                        <p className='text-center mt-1 text-sm'>LegalConnect goes beyond just connecting you with lawyers; it's also dedicated to empowering you with knowledge. We offer valuable legal resources to help you gain a better understanding of your rights.</p>
                     </div>
                 </div>
             </section>
