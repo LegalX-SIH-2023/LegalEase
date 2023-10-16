@@ -51,8 +51,7 @@ const Hero = () => {
             </div>
 
             <p className="text-xl text-primary-mediumGray text-center md:text-left">
-              A comprehensive resource for connecting you with <br /> the ideal attorney to address all your legal requirements, <br /> we recognize that selecting the right attorney can be <br /> an overwhelming and daunting task{" "}
-              and this is precisely <br /> where we step in to alleviate the burden.
+            We provide a comprehensive resource to help you connect with the ideal attorney to meet all your legal needs. We understand that choosing the right attorney can be a daunting and overwhelming task <br /> where we step in to alleviate the burden.
             </p>
             <button className="p-2 bg-primary-navy rounded-xl px-4 text-xl font-semibold text-white hover:shadow-xl">
               Explore
